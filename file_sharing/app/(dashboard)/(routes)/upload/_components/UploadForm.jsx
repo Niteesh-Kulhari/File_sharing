@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import AlerMessage from './AlerMessage';
 import FilePreview from './FilePreview';
+import ProgressBar from './ProgressBar';
 
-function UploadForm() {
+function UploadForm({uploadBtnClick, progress}) {
     const[file, setFile] = useState();
     const[errorMessage, setErrorMessage] = useState();
 
     const onFileSelect = (file) =>{
-        console.log(file)
+        //console.log(file)
         if(file && file.size>2000000){
             setErrorMessage("File size greater than 2 MB")
             return;
@@ -42,7 +43,12 @@ function UploadForm() {
         {errorMessage ? <AlerMessage msg={errorMessage}/> : null}
         {file ? <FilePreview file={file} removeFile={() => setFile(null)}/> : null}
         <div>
-            <button disabled={!file} className='bg-primary w-[30%] mt-5 rounded-full text-white p-2 disabled:bg-gray-500 hover:cursor-pointer'>Upload</button>    
+            {progress>0 ?<ProgressBar progress={progress}/> : 
+                <button disabled={!file} className='bg-primary w-[30%] mt-5 rounded-full text-white 
+                    p-2 disabled:bg-gray-500 hover:cursor-pointer' onClick={() => uploadBtnClick(file)}>
+                    Upload
+                </button> 
+            }   
         </div> 
        
 
