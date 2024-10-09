@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AlerMessage from './AlerMessage';
 import FilePreview from './FilePreview';
 import ProgressBar from './ProgressBar';
+import toast from 'react-hot-toast';
 
 function UploadForm({uploadBtnClick, progress}) {
     const[file, setFile] = useState();
@@ -16,6 +17,15 @@ function UploadForm({uploadBtnClick, progress}) {
         setErrorMessage(null);
         setFile(file);
     }
+
+    // For Toast message
+    useEffect(()=>{
+        if(progress === 100){
+            toast.success("Uploaded successfully");
+        }
+    },[progress]);
+
+    
   return (
     <div className='text-center'>
       
@@ -50,7 +60,6 @@ function UploadForm({uploadBtnClick, progress}) {
                 </button> 
             }   
         </div> 
-       
 
     </div>
   )
