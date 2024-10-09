@@ -2,17 +2,33 @@ import React, { useEffect, useState } from 'react'
 import { ArrowLeft, Copy, FileType } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import GlobalApi from '../../../../../_utils/GlobalApi'
+import { useUser } from '@clerk/nextjs'
 
 export default function FileShareComponent({file, onPasswordSave}) {
   const [enablePassword, setEnablePassword] = useState(false)
   const [email, setEmail] = useState("")
   const[fileType, setFileType] = useState("");
   const[tempPassword, setTempPassword] = useState("");
-
+  const { user } = useUser();
   const router = useRouter()
 
   const handleClick = () => {
     router.push('/upload')
+  }
+
+  const sendEmail = () => {
+    const data = {
+      emailToSend: email,
+      userName: user?.fullName,
+      fileName: file.fileName,
+      fileSize: file.fileSize,
+      fileType: file.fileType,
+      shortUrl: file.shortUrl
+    }
+    console.log(file.shortUrl)
+    GlobalApi.SendEmail(data).then(res => {
+      console.log(res)})
   }
 
   const handleCopy = () => {
@@ -118,7 +134,10 @@ export default function FileShareComponent({file, onPasswordSave}) {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
-            <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+            <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 
+            focus:ring-blue-500 focus:ring-offset-2"
+            onClick={() => sendEmail()}
+            >
               Send Email
             </button>
           </div>

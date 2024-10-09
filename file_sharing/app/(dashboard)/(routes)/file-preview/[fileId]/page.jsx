@@ -1,6 +1,6 @@
 "use client"
 
-import { app } from '@/firebaseConfig'
+import { app } from '../../../../../firebaseConfig'
 import { doc, getDoc, getFirestore, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 
@@ -11,12 +11,12 @@ function page({ params }) {
     const[password, setPassword] = useState("");
 
     const getFileInfo = async() => {
-        console.log(params?.fileId)
+        //console.log(params?.fileId)
         const docRef = doc(db, "uploadedFile", params?.fileId);
         const docSnap = await getDoc(docRef);
 
         if(docSnap.exists()){
-            console.log(docSnap.data());
+            //console.log(docSnap.data());
             setFile(docSnap.data());
         }else{
             console.log("No such document exists");

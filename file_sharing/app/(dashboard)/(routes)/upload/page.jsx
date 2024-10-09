@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import UploadForm from './_components/UploadForm'
-import { app } from '@/firebaseConfig'
+import { app } from '../../../../firebaseConfig'
 import { getStorage, uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage'
 import { doc, getFirestore, setDoc } from "firebase/firestore"
 import { Toaster } from 'react-hot-toast'
 import { useUser } from '@clerk/nextjs'
-import { generateRandomString } from '@/app/_utils/GenerateRandomString'
+import { generateRandomString } from '../../../_utils/GenerateRandomString'
 import { useRouter } from 'next/navigation'
 
 function Upload() {
@@ -52,7 +52,7 @@ function Upload() {
       userName: user?.fullName,
       password: "",  // Placeholder for password if needed
       id: docId,
-      shortUrl: process.env.NEXT_PUBLIC_BASE_URL + docId  // Generated short URL
+      shortUrl: process.env.NEXT_PUBLIC_BASE_URL + 'f/' + docId  // Generated short URL
     });
     setDocId(docId);
   }
@@ -64,6 +64,7 @@ function Upload() {
   useEffect(() => {
     // Redirect after upload is completed and docId is set
     if (uploadCompleted && docId) {
+      //console.log("here")
       setTimeout(() => {
         router.push(`/file-preview/${docId}`);
         setUploadCompleted(false); // Reset state

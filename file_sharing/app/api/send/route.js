@@ -4,17 +4,15 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export function GET() {
-    return NextResponse.json("HELLO"); // Ensure you return the response
-}
 
-export async function POST() {
+export async function POST(req) {
+  const res = await req.json();
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
-      subject: 'Hello world',
-      react: EmailTemplate({ firstName: 'John' }),
+      from: 'file-sharing@resend.dev',
+      to: ['nkulhari96@gmail.com'],
+      subject: res?.userName + " shared a file with you",
+      react: EmailTemplate({ res }),
     });
 
     if (error) {

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Header() {
@@ -11,21 +12,21 @@ function Header() {
     <div className="flex flex-1 items-center justify-end md:justify-between">
       <nav aria-label="Global" className="hidden md:block">
         <ul className="flex items-center gap-6 text-sm">
-          <li>
+          <Link href="/"> 
             <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Home </a>
-          </li>
+          </Link>
 
-          <li>
-            <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Upload </a>
-          </li>
+          <Link href="/upload">
+              <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Upload </a>
+          </Link>
 
-          <li>
+          {/* <Link href="">
             <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> About Us </a>
-          </li>
+          </Link>
 
-          <li>
+          <Link>
             <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Contact Us </a>
-          </li>
+          </Link> */}
         </ul>
       </nav>
 
