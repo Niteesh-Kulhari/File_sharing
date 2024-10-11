@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-function SideNav() {
+function SideNav({closeSideBar}) {
     const menuList = [
         {
             id:1,

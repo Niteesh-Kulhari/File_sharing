@@ -8,7 +8,7 @@ function layout({children}) {
   return (
     <div>
         <div className=' h-full md:w-64 flex-col fixed inset-y-0 z-50 md:flex hidden'>
-          <SideNav/>
+          <SideNav closeSideBar={() => setToggle(false)}/>
         </div>
 
         {toggle && (
@@ -21,7 +21,7 @@ function layout({children}) {
 
           {/* Sidebar with larger width (full width on small screens) */}
           <div className='h-full w-80 flex-col fixed inset-y-0 z-50 bg-white'>
-            <SideNav />
+            <SideNav  closeSideBar={() => setToggle(false)}/>
           </div>
         </>)}
         <div className='md:ml-64'>
