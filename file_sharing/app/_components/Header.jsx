@@ -1,12 +1,24 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Header() {
   return (
     <div>
     <header className="bg-white">
-  <div className="mx-auto flex h-16 max-w-screen-xxl items-center gap-8 mt-2 px-4 sm:px-6 lg:px-8 border-b">
-    <Image src='logo1.svg' width={50} height={50}/>
+  <div className="mx-auto flex h-16 max-w-screen-xxl items-center gap-5 mt-2 px-4 sm:px-6 lg:px-8 border-b">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="relative w-10 h-10">
+            <Image
+              src="/logo1.svg"
+              alt="File-sharing Logo"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
+          <span className="text-xl font-bold text-black">File-sharing</span>
+        </Link>
 
     <div className="flex flex-1 items-center justify-end md:justify-between">
       <nav aria-label="Global" className="hidden md:block">
@@ -33,7 +45,7 @@ function Header() {
         <div className="sm:flex sm:gap-4">
           <a
             className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
-            href="/upload"
+            href="/uploads"
           >
             Get Started
           </a>

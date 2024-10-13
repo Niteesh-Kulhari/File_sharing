@@ -1,6 +1,6 @@
 "use client"
 
-import { File, Shield, Upload } from 'lucide-react'
+import { File, Shield, Upload, Users } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -21,9 +21,9 @@ function SideNav({closeSideBar}) {
         },
         {
             id:3,
-            name:'Upgrade',
-            icons: Shield,
-            path:'/upgrade'
+            name:'About Us',
+            icons: Users,
+            path:'/about-us'
         }
     ]
 
@@ -31,9 +31,18 @@ function SideNav({closeSideBar}) {
   return (
     <div className='shadow-sm border-r h-full'>
         <div className='p-4 border-b h-21'>
-            <Link href="/">
-                <Image src='/logo1.svg' width={50} height={50}/>
-            </Link>
+        <Link href="/" className="flex items-center gap-2">
+          <div className="relative w-10 h-10">
+            <Image
+              src="/logo1.svg"
+              alt="File-sharing Logo"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
+          <span className="text-xl font-bold text-black">File-sharing</span>
+        </Link>
         </div>
         <div className='flex flex-col float-left w-full'>
             {menuList.map((item, index) =>(

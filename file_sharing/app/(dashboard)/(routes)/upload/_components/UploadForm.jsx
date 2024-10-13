@@ -37,10 +37,10 @@ function UploadForm({uploadBtnClick, progress}) {
                     </svg>
                     <p className="mb-2 text-l lg:text-2xl text-gray-500"><span className="font-semibold">
                         <strong>Click to upload</strong>
-                        </span> or 
-                        <strong className='text-primary'> drag </strong> 
-                        and 
-                        <strong className='text-primary'> drop </strong></p>
+                        </span> and 
+                        <strong className='text-primary'> Share </strong> 
+                        your 
+                        <strong className='text-primary'> Files </strong></p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 2MB)</p>
                 </div>
                 <input 

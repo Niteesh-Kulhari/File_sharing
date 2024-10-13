@@ -7,10 +7,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   const res = await req.json();
+
   try {
     const { data, error } = await resend.emails.send({
-      from: 'file-sharing@resend.dev',
-      to: ['nkulhari96@gmail.com'],
+      from: 'noreply@nkulhari.com',
+      to: [`${res.emailToSend}`],
       subject: res?.userName + " shared a file with you",
       react: EmailTemplate({ res }),
     });

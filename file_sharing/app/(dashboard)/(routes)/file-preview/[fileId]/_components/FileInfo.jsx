@@ -26,9 +26,9 @@ export default function FileShareComponent({file, onPasswordSave}) {
       fileType: file.fileType,
       shortUrl: file.shortUrl
     }
-    console.log(file.shortUrl)
+    //console.log(file.shortUrl)
     GlobalApi.SendEmail(data).then(res => {
-      console.log(res)})
+      toast.success("Email Sent")})
   }
 
   const handleCopy = () => {
