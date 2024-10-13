@@ -22,7 +22,7 @@ export const EmailTemplate = ({
 }) => (
   <Html>
       <Head />
-      <Preview>Yelp recent login</Preview>
+      <Preview>File-share</Preview>
       <Body style={main}>
         <Container>
           
